@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Personal AI Wealth Profile</title>
+
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            padding: 20px;
+        }
+
+        /* Quiz container */
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        /* Quiz header */
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .quiz-title {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .quiz-description {
+            color: #666;
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto 25px;
+        }
+
+        /* Progress bar */
+        .progress-container {
+            margin-bottom: 40px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #4CAF50;
+            transition: width 0.3s ease;
+        }
+
+        /* Progress steps */
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            position: relative;
+            padding: 0 40px;
+        }
+
+        .step-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            position: relative;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .step-indicator.active {
+            opacity: 1;
+        }
+
+        .step-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #666;
+            margin-bottom: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .step-indicator.active .step-circle {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .step-label {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Quiz steps */
+        .quiz-step {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .quiz-step:first-of-type {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Question groups */
+        .question-group {
+            margin-bottom: 30px;
+        }
+
+        .question-label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
+
+        /* Select inputs */
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #333;
+            background-color: white;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        /* Radio and Checkbox groups */
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .radio-option,
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .radio-option:hover,
+        .checkbox-option:hover {
+            background-color: #f8f9fa;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 12px;
+            cursor: pointer;
+        }
+
+        /* Error messages */
+        .error-message {
+            display: none;
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        /* Button container */
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #prevButton {
+            background-color: #e9ecef;
+            color: #495057;
+        }
+
+        #prevButton:hover {
+            background-color: #dee2e6;
+        }
+
+        #nextButton {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #nextButton:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .quiz-container {
+                padding: 20px;
+            }
+
+            .progress-steps {
+                padding: 0 20px;
+            }
+
+            .step-label {
+                font-size: 12px;
+            }
+
+            button {
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1 id="investment-profile-quiz" class="quiz-title">Your Personal Great AI Power Crisis Profile</h1>
+            
+            <p>Take this 3-minute questionnaire to tailor your AI Power Crisis Report to map
+            perfectly to your investment goals, financial situation, and preferred
+            position sizing strategy.</p>
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+
+                <div class="progress-steps">
+                    <div class="step-indicator active" data-step="1">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Basic Info</div>
+                    </div>
+
+                    <div class="step-indicator" data-step="2">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Goals</div>
+                    </div>
+
+                    <div class="step-indicator" data-step="3">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Profile</div>
+                    </div>
+
+                    <div class="step-indicator" data-step="4">
+                        <div class="step-circle">4</div>
+                        <div class="step-label">Experience</div>
+                    </div>
+
+                    <div class="step-indicator" data-step="5">
+                        <div class="step-circle">5</div>
+                        <div class="step-label">Financial</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form id="quizForm" class="quiz-content">
+            <div id="step1" class="quiz-step">
+                <div class="question-group">
+                    <label class="question-label" for="country">Select your country</label>
+                    <select id="country" name="country" required>
+                        <option value="">Please select your country</option>
+                    </select>
+                    <div id="countryError" class="error-message">Please select your country</div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label" for="age">What is your age?</label>
+                    <select id="age" name="age" required>
+                        <option value="">Please select your age range</option>
+                    </select>
+                    <div id="ageError" class="error-message">Please select your age range</div>
+                </div>
+            </div>
+
+            <div id="step2" class="quiz-step" style="display: none;"></div>
+            <div id="step3" class="quiz-step" style="display: none;"></div>
+            <div id="step4" class="quiz-step" style="display: none;"></div>
+            <div id="step5" class="quiz-step" style="display: none;"></div>
+
+            <div class="button-container">
+                <button type="button" id="prevButton" style="display: none;">Previous</button>
+                <button type="button" id="nextButton">Next</button>
+            </div>
+        </form>
+    </div>
+    
+    <script src="js/config.js"></script>
+    <script src="js/questions.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>
