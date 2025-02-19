@@ -804,7 +804,8 @@ document.addEventListener("DOMContentLoaded", function () {
       (option) => option.value === selectedCountry
     );
 
-    const redirectUrl = `${baseUrl}?country=${selectedOption.label}&currency=${selectedCurrency}`;
+    const redirectUrl = `${baseUrl}`;
+    //?country=${selectedOption.label}&currency=${selectedCurrency}`
 
     console.log("Redirect URL:", redirectUrl);
 
@@ -973,7 +974,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Extract the uuid from the response
       const uuid = responseData.data.uuid;
 
-      const finalRedirectURL = `${redirectURL}&response_uuid=${uuid}`;
+      const finalRedirectURL = `${redirectURL}`;
 
       console.log("Final Redirect URL:", finalRedirectURL);
 
