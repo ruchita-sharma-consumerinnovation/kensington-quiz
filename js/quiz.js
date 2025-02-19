@@ -673,12 +673,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Validate step answers
     if (currentStep === 1) {
-      if (!currentStepData.country) {
-        const countryError = document.getElementById("countryError");
-        countryError.style.display = "block";
-        if (!firstInvalidElement) firstInvalidElement = countryError;
-        isValid = false;
-      }
+      
       if (!currentStepData.age) {
         const ageError = document.getElementById("ageError");
         ageError.style.display = "block";

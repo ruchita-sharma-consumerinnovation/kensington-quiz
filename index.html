@@ -162,6 +162,10 @@
             border-color: #4CAF50;
         }
 
+        #country, label[for="country"], #countryError {
+    display: none;
+}
+
         /* Radio and Checkbox groups */
         .radio-group,
         .checkbox-group {
@@ -304,12 +308,12 @@
 
         <form id="quizForm" class="quiz-content">
             <div id="step1" class="quiz-step">
-                <div class="question-group">
-                    <label class="question-label" for="country">Select your country</label>
-                    <select id="country" name="country" required>
-                        <option value="">Please select your country</option>
+                <div class="question-group" >
+                    <!-- <label class="question-label" for="country"></label> -->
+                    <select id="country" name="country" >
+                        <option value=""></option>
                     </select>
-                    <div id="countryError" class="error-message">Please select your country</div>
+                    <!-- <div id="countryError" class="error-message"></div> -->
                 </div>
 
                 <div class="question-group">

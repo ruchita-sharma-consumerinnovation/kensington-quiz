@@ -3,12 +3,12 @@
 const QUIZ_CONFIG = {
     // Checkout URLs for each price point
     checkoutUrls: {
-        price197:"https://order.kensingtonresearchreports.com/checkout/12?currency=USD&country=United%20States&s[…]ad8190de5e549aceccb9c124517e4122a9154457a959f6c7eee",   // For scores above 55 points
-        price97: "https://order.kensingtonresearchreports.com/checkout/13?currency=USD&country=United%20States&s[…]ad8190de5e549aceccb9c124517e4122a9154457a959f6c7eee",   // For scores 45-54 points
-        price67: "https://order.kensingtonresearchreports.com/checkout/14?currency=USD&country=United%20States&s[…]ad8190de5e549aceccb9c124517e4122a9154457a959f6c7eee",   // For scores 35-44 points
-        price47: "https://order.kensingtonresearchreports.com/checkout/15?currency=USD&country=United%20States&s[…]ad8190de5e549aceccb9c124517e4122a9154457a959f6c7eee",   // For scores 25-34 points
-        price27: "https://order.kensingtonresearchreports.com/checkout/16?currency=USD&country=United%20States&s[…]ad8190de5e549aceccb9c124517e4122a9154457a959f6c7eee",   // For scores 15-24 points
-        price17: "https://order.kensingtonresearchreports.com/checkout/17?currency=USD&country=United%20States&s[…]ad8190de5e549aceccb9c124517e4122a9154457a959f6c7eee",   // For scores below 15 points
+        price197:"https://order.kensingtonresearchreports.com/checkout/12?currency=USD&country=United%20States&signature=45b9a7f107012ad8190de5e549aceccb9c124517e4122a9154457a959f6c7eee",   // For scores above 55 points
+        price97: "https://order.kensingtonresearchreports.com/checkout/13?currency=USD&country=United%20States&signature=45b9a7f107012ad8190de5e549aceccb9c124517e4122a9154457a959f6c7eee",   // For scores 45-54 points
+        price67: "https://order.kensingtonresearchreports.com/checkout/14?currency=USD&country=United%20States&signature=45b9a7f107012ad8190de5e549aceccb9c124517e4122a9154457a959f6c7eee",   // For scores 35-44 points
+        price47: "https://order.kensingtonresearchreports.com/checkout/15?currency=USD&country=United%20States&signature=45b9a7f107012ad8190de5e549aceccb9c124517e4122a9154457a959f6c7eee",   // For scores 25-34 points
+        price27: "https://order.kensingtonresearchreports.com/checkout/16?currency=USD&country=United%20States&signature=45b9a7f107012ad8190de5e549aceccb9c124517e4122a9154457a959f6c7eee",   // For scores 15-24 points
+        price17: "https://order.kensingtonresearchreports.com/checkout/17?currency=USD&country=United%20States&signature=45b9a7f107012ad8190de5e549aceccb9c124517e4122a9154457a959f6c7eee",   // For scores below 15 points
     },
 
     // Currency conversion and formatting settings

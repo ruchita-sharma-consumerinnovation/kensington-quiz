@@ -7,8 +7,8 @@ const QUIZ_QUESTIONS = {
             {
                 id: "country",
                 type: "select",
-                label: "Select your country",
-                required: true,
+                label: "",
+                required: false,
                 options: [
                     { value: "US", label: "United States" },
                     { value: "GB", label: "United Kingdom" },
